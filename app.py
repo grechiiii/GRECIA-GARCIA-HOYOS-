@@ -172,18 +172,19 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
 st.markdown('🎨 <h2>Mis trabajos</h2>', unsafe_allow_html=True)
 
-col1, col2 = st.columns(2)
-with col1:
-    st.image("https://imgur.com/kXKetrq.png", caption="Presentación en Canva")
-    st.markdown('[🔗 Ver presentación](https://www.canva.com/design/DAGDV5B6KKo/u8FHE7mouTrmOLrzhY8AUQ/view)')
+with st.container():
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        st.image("https://imgur.com/kXKetrq.png", caption="Presentación Canva", width=220)
+        st.markdown('[🔗 Ver presentación](https://www.canva.com/design/DAGDV5B6KKo/u8FHE7mouTrmOLrzhY8AUQ/view)')
+    with col2:
+        st.image("https://imgur.com/m2b3Z0B.png", caption="Video TikTok", width=220)
+        st.markdown('[▶️ Ver video](https://vm.tiktok.com/ZMS9CDVTq/)')
+    with col3:
+        st.image("https://imgur.com/EKxwuDo.png", caption="Video hablando", width=220)
+        st.markdown('[🎥 Ver en Instagram](https://www.instagram.com/reel/DJPZk9xpZaG/)')
 
-with col2:
-    st.image("https://imgur.com/m2b3Z0B.png", caption="Video TikTok")
-    st.markdown('[▶️ Ver video](https://vm.tiktok.com/ZMS9CDVTq/)')
-
-st.image("https://imgur.com/EKxwuDo.png", caption="Video hablando")
-st.markdown('[🎥 Ver en Instagram](https://www.instagram.com/reel/DJPZk9xpZaG/)')
-st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True) 
 
 # --- CV DESCARGABLE ---
 st.markdown('<div class="seccion">', unsafe_allow_html=True)
