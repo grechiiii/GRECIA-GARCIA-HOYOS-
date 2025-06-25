@@ -229,7 +229,7 @@ st.markdown('🕒 <h2>Mi trayectoria</h2>', unsafe_allow_html=True)
 
 timeline_events = [
     {"year": "2022", "title": "Egresé del colegio", "description": "Colegio Cristo Rey."},
-    {"year": "2023", "title": "Inicié mis estudios en PUCP", "description": "Publicidad en PUCP, mis buenas notas me llevaron a ocupar el primer puesto de la promoción."},
+    {"year": "2023", "title": "Inicié mis estudios en PUCP", "description": "Inicié la carrera de publicidad en PUCP, mis buenas notas me llevaron a ocupar el primer puesto de la promoción."},
     {"year": "Marzo 2024", "title": "Diseñadora en Huellitas", "description": "Ingresé a Huellitas en el puesto de diseñadora audiovisual."},
     {"year": "Marzo 2025", "title": "Coordinadora de Huellitas", "description": "Pasé a coordinar el área de comunicaciones, encargándome de las redes sociales y campañas."},
     {"year": "Mayo 2025", "title": "Ganadora de Concurso", "description": "Gané el concurso de Investigación Académica de Estudios Generales Letras."}
