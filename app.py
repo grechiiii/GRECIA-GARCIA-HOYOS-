@@ -178,10 +178,10 @@ with st.container():
         st.image("https://imgur.com/kXKetrq.png", caption="Presentación Canva", width=220)
         st.markdown('[🔗 Ver presentación](https://www.canva.com/design/DAGDV5B6KKo/u8FHE7mouTrmOLrzhY8AUQ/view)')
     with col2:
-        st.image("https://imgur.com/m2b3Z0B.png", caption="Video TikTok", width=220)
+        st.image("https://imgur.com/m2b3Z0B.png", caption="Video TikTok para huellitas", width=220)
         st.markdown('[▶️ Ver video](https://vm.tiktok.com/ZMS9CDVTq/)')
     with col3:
-        st.image("https://imgur.com/EKxwuDo.png", caption="Video hablando", width=220)
+        st.image("https://imgur.com/EKxwuDo.png", caption="Video Instagram para huellitas", width=220)
         st.markdown('[🎥 Ver en Instagram](https://www.instagram.com/reel/DJPZk9xpZaG/)')
 
 st.markdown('</div>', unsafe_allow_html=True) 
