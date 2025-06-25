@@ -80,12 +80,6 @@ Siempre busco aprender, colaborar y crear impacto desde la comunicación.""",
     "Email": "a20234861@pucp.edu.pe"
 }
 
-endorsements = {
-    "img1": "https://i.imgur.com/YQx2CP1.jpeg",
-    "img2": "https://i.imgur.com/CmdHRw2.jpeg",
-    "img3": "https://i.imgur.com/jakXIXZ.jpeg"
-}
-
 # --- CABECERA ---
 st.markdown('<div class="seccion">', unsafe_allow_html=True)
 col_foto, col_texto = st.columns([1, 3])
@@ -103,16 +97,32 @@ st.markdown('📬 <h2>Contacto</h2>', unsafe_allow_html=True)
 st.markdown(f'📧 {info["Email"]}  \n📍 {info["City"]}  \n[🔗 LinkedIn]({info["Medium"]})')
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- GALERÍA ---
+# --- GALERÍA INTERACTIVA ---
+endorsements = [
+    ("https://i.imgur.com/YQx2CP1.jpeg", "Foto 1"),
+    ("https://i.imgur.com/CmdHRw2.jpeg", "Foto 2"),
+    ("https://i.imgur.com/jakXIXZ.jpeg", "Foto 3")
+]
+
 st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
 st.markdown('📸 <h2>Galería</h2>', unsafe_allow_html=True)
-gal_col1, gal_col2, gal_col3 = st.columns(3)
-with gal_col1:
-    st.image(endorsements["img1"], width=250)
-with gal_col2:
-    st.image(endorsements["img2"], width=250)
-with gal_col3:
-    st.image(endorsements["img3"], width=250)
+
+if 'foto_idx' not in st.session_state:
+    st.session_state.foto_idx = 0
+
+col_izq, col_cen, col_der = st.columns([1, 2, 1])
+with col_izq:
+    if st.button("⬅️ Anterior"):
+        st.session_state.foto_idx = (st.session_state.foto_idx - 1) % len(endorsements)
+with col_cen:
+    st.image(
+        endorsements[st.session_state.foto_idx][0],
+        caption=endorsements[st.session_state.foto_idx][1],
+        use_column_width=True
+    )
+with col_der:
+    if st.button("Siguiente ➡️"):
+        st.session_state.foto_idx = (st.session_state.foto_idx + 1) % len(endorsements)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- SOBRE GRECIA ---
@@ -168,23 +178,40 @@ st.markdown("""
 """)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- MIS TRABAJOS ---
+# --- MIS TRABAJOS CON ENLACES ---
 st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
 st.markdown('🎨 <h2>Mis trabajos</h2>', unsafe_allow_html=True)
 
-with st.container():
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col1:
-        st.image("https://imgur.com/kXKetrq.png", caption="Presentación Canva", width=220)
-        st.markdown('[🔗 Ver presentación](https://www.canva.com/design/DAGDV5B6KKo/u8FHE7mouTrmOLrzhY8AUQ/view)')
-    with col2:
-        st.image("https://imgur.com/m2b3Z0B.png", caption="Video TikTok para huellitas", width=220)
-        st.markdown('[▶️ Ver video](https://vm.tiktok.com/ZMS9CDVTq/)')
-    with col3:
-        st.image("https://imgur.com/EKxwuDo.png", caption="Video Instagram para huellitas", width=220)
-        st.markdown('[🎥 Ver en Instagram](https://www.instagram.com/reel/DJPZk9xpZaG/)')
+trabajos = [
+    {
+        "imagen": "https://imgur.com/kXKetrq.png",
+        "titulo": "Presentación Canva",
+        "enlace": "https://www.canva.com/design/DAGDV5B6KKo/u8FHE7mouTrmOLrzhY8AUQ/view"
+    },
+    {
+        "imagen": "https://imgur.com/m2b3Z0B.png",
+        "titulo": "Video TikTok para Huellitas",
+        "enlace": "https://vm.tiktok.com/ZMS9CDVTq/"
+    },
+    {
+        "imagen": "https://imgur.com/EKxwuDo.png",
+        "titulo": "Video Instagram para Huellitas",
+        "enlace": "https://www.instagram.com/reel/DJPZk9xpZaG/"
+    }
+]
 
-st.markdown('</div>', unsafe_allow_html=True) 
+col1, col2, col3 = st.columns(3)
+cols = [col1, col2, col3]
+for i, trabajo in enumerate(trabajos):
+    with cols[i]:
+        st.markdown(f'''
+            <a href="{trabajo["enlace"]}" target="_blank">
+                <img src="{trabajo["imagen"]}" width="220px" style="border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+                <p style="text-align:center; color:{texto_claro};">{trabajo["titulo"]}</p>
+            </a>
+        ''', unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
 
 # --- CV DESCARGABLE ---
 st.markdown('<div class="seccion">', unsafe_allow_html=True)
@@ -213,11 +240,12 @@ st.markdown('🕒 <h2>Mi trayectoria</h2>', unsafe_allow_html=True)
 
 timeline_events = [
     {"year": "2022", "title": "Egresé del colegio", "description": "Colegio Cristo Rey."},
-    {"year": "2023", "title": "Inicie mis estudios en PUCP", "description": "Publicidad en PUCP, mis buenas notas me llevaron a ocupar el primer puesto de la promoción."},
-    {"year": "Marzo 2024", "title": "Diseñadora en Huellitas", "description": "Ingrese a huellitas en el pueso de diseñadora audiovisual."},
-    {"year": "Marzo 2025", "title": "Coordinadora de Huellitas", "description": "Pase a coordinar el área de comunicaciones, encargandome de las redes sociales y campañas."},
-    {"year": "Mayo 2025", "title": "Ganadora de Concurso", "description": "Gané el concurso de Investigación academica de Estudios Generales Letras."}
+    {"year": "2023", "title": "Inicié mis estudios en PUCP", "description": "Publicidad en PUCP, mis buenas notas me llevaron a ocupar el primer puesto de la promoción."},
+    {"year": "Marzo 2024", "title": "Diseñadora en Huellitas", "description": "Ingresé como diseñadora audiovisual."},
+    {"year": "Marzo 2025", "title": "Coordinadora de Huellitas", "description": "Encargada de redes sociales y campañas."},
+    {"year": "Mayo 2025", "title": "Ganadora de Concurso", "description": "Gané el concurso de Investigación Académica de EEGGLL."}
 ]
+
 for event in timeline_events:
     st.markdown(f'''
         <div class="evento-timeline">
