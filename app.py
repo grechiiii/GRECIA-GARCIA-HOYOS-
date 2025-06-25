@@ -111,7 +111,6 @@ with col2:
 with col3:
     st.image("https://imgur.com/EKxwuDo.png", caption="Video hablando", use_column_width=True)
     st.markdown('[🎥 Ver en Instagram](https://www.instagram.com/reel/DJPZk9xpZaG/)')
-
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- CV ---
@@ -121,4 +120,5 @@ st.markdown('[⬇️ Descargar CV (PDF)](https://drive.google.com/file/d/1UswU-z
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- FOOTER ---
-st.markdown('<footer>✨ Portafolio creado por Grecia García Hoyos✨</footer>'),
+st.markdown('<footer>✨ Portafolio creado por Grecia García Hoyos ✨</footer>', unsafe_allow_html=True)
+
