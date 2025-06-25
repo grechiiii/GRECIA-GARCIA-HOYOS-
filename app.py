@@ -228,4 +228,4 @@ for event in timeline_events:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- FOOTER ---
-st.markdown('<footer>✨ Portafolio creado por Grecia García Hoyos | Con amor y gatitos negros 🐈‍⬛✨</footer>', unsafe_allow_html=True)
+st.markdown('<footer>✨ Portafolio creado por Grecia García Hoyos✨</footer>', unsafe_allow_html=True)
