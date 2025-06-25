@@ -1,15 +1,15 @@
 import streamlit as st
 
-# --- COLORES OSCUROS ---
+# --- COLORES Y ESTILOS ---
 fondo_oscuro = "#0A192F"
 texto_claro = "#FFFFFF"
-azul_medio = "#64ffda"
-azul_oscuro = "#112240"
+celeste_suave = "#A8DADC"
 azul_hover = "#0ab2b8"
 
+st.set_page_config(page_title="Portafolio de Grecia", layout="wide")
+
 # --- CSS PERSONALIZADO ---
-st.markdown(
-    f"""
+st.markdown(f"""
     <style>
     body, .stApp {{
         background-color: {fondo_oscuro};
@@ -18,7 +18,7 @@ st.markdown(
     .titulo-principal {{
         font-size: 2.8rem;
         font-weight: 900;
-        background: linear-gradient(90deg, {azul_medio}, {azul_hover});
+        background: linear-gradient(90deg, {celeste_suave}, {azul_hover});
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 1rem;
@@ -27,19 +27,15 @@ st.markdown(
         border-radius: 15px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         max-width: 140px;
-        display: block;
-        margin-bottom: 1rem;
+        margin: 0 auto;
     }}
     h2 {{
-        color: {azul_medio} !important;
-        font-weight: 700;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
+        color: {celeste_suave} !important;
         border-bottom: 3px solid {azul_hover};
         padding-bottom: 0.3rem;
     }}
     .seccion {{
-        background-color: {azul_oscuro};
+        background-color: #112240;
         border-radius: 12px;
         padding: 1.5rem 2rem;
         margin-bottom: 2rem;
@@ -51,51 +47,28 @@ st.markdown(
     }}
     footer {{
         text-align: center;
-        color: {azul_medio};
+        color: {celeste_suave};
         margin-top: 3rem;
         font-weight: 600;
     }}
-    .galeria img {{
-        border-radius: 12px;
-        box-shadow: 0 6px 15px rgba(100, 255, 218, 0.2);
-        margin-bottom: 15px;
+    .galeria img, .imagenes-logros img {{
+        border-radius: 10px;
         max-width: 100%;
+        box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
         transition: transform 0.3s ease;
     }}
-    .galeria img:hover {{
+    .galeria img:hover, .imagenes-logros img:hover {{
         transform: scale(1.05);
     }}
     .evento-timeline {{
-        border-left: 4px solid {azul_medio};
+        border-left: 4px solid {celeste_suave};
         padding-left: 1rem;
-        margin-bottom: 1.2rem;
-    }}
-    .evento-timeline h4 {{
-        margin-bottom: 0.2rem;
-        color: {azul_medio};
-    }}
-    .imagenes-logros {{
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 1rem;
-    }}
-    .imagenes-logros img {{
-        border-radius: 10px;
-        max-width: 250px;
-        box-shadow: 0 5px 15px rgba(100, 255, 218, 0.25);
-        transition: transform 0.3s ease;
-    }}
-    .imagenes-logros img:hover {{
-        transform: scale(1.07);
+        margin-bottom: 1rem;
     }}
     </style>
-    """,
-    unsafe_allow_html=True,
-)
+""", unsafe_allow_html=True)
 
-# --- INFORMACIÓN PERSONAL ---
+# --- INFO PERSONAL ---
 info = {
     "Full_Name": "Grecia García Hoyos",
     "Intro": "Estudiante de Publicidad y apasionada por la comunicación creativa con impacto social",
@@ -152,7 +125,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
     st.markdown('<div class="seccion">', unsafe_allow_html=True)
-    st.markdown('💼 <h2>Experiencia de trabajo</h2>', unsafe_allow_html=True)
+    st.markdown('💼 <h2>Experiencia</h2>', unsafe_allow_html=True)
     st.markdown("""
     - Voluntariado ambiental en el colegio  
     - Coordinadora de redes sociales en Huellitas PUCP  
@@ -161,7 +134,7 @@ with col1:
     st.markdown('</div>', unsafe_allow_html=True)
 with col2:
     st.markdown('<div class="seccion">', unsafe_allow_html=True)
-    st.markdown('🎯 <h2>Metas de carrera</h2>', unsafe_allow_html=True)
+    st.markdown('🎯 <h2>Metas</h2>', unsafe_allow_html=True)
     st.markdown("Desarrollarse profesionalmente en comunicación y publicidad, creando proyectos con impacto social.")
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -195,34 +168,40 @@ st.markdown("""
 """)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- TRABAJOS DESTACADOS ---
+# --- MIS TRABAJOS ---
 st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
 st.markdown('🎨 <h2>Mis trabajos</h2>', unsafe_allow_html=True)
-trabajo_col1, trabajo_col2 = st.columns(2)
-with trabajo_col1:
-    st.image("https://imgur.com/kXKetrq.png", caption="Portada - Presentación")
-    st.markdown('[🔗 Ver presentación en Canva](https://www.canva.com/design/DAGDV5B6KKo/u8FHE7mouTrmOLrzhY8AUQ/view)')
-with trabajo_col2:
+
+col1, col2 = st.columns(2)
+with col1:
+    st.image("https://imgur.com/kXKetrq.png", caption="Presentación en Canva")
+    st.markdown('[🔗 Ver presentación](https://www.canva.com/design/DAGDV5B6KKo/u8FHE7mouTrmOLrzhY8AUQ/view)')
+
+with col2:
     st.image("https://imgur.com/m2b3Z0B.png", caption="Video TikTok")
-    st.markdown('[▶️ Ver video en TikTok](https://vm.tiktok.com/ZMS9CDVTq/)')
-trabajo_col3, trabajo_col4 = st.columns(2)
-with trabajo_col3:
-    st.markdown('[🎥 Ver video hablando (Instagram)](https://www.instagram.com/reel/DJPZk9xpZaG/)')
-with trabajo_col4:
-    st.markdown('[📄 Ver portafolio en Drive](https://drive.google.com/file/d/1UswU-ztMEpjFg6l4wJrIsG3NxWDTuQx3/view)')
+    st.markdown('[▶️ Ver video](https://vm.tiktok.com/ZMS9CDVTq/)')
+
+st.image("https://imgur.com/EKxwuDo.png", caption="Video hablando")
+st.markdown('[🎥 Ver en Instagram](https://www.instagram.com/reel/DJPZk9xpZaG/)')
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- CV DESCARGABLE ---
+st.markdown('<div class="seccion">', unsafe_allow_html=True)
+st.markdown('📄 <h2>Mi CV</h2>', unsafe_allow_html=True)
+st.markdown('[⬇️ Descargar CV (PDF)](https://drive.google.com/file/d/1UswU-ztMEpjFg6l4wJrIsG3NxWDTuQx3/view)')
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- LOGROS ---
 st.markdown('<div class="seccion">', unsafe_allow_html=True)
 st.markdown('🏆 <h2>Logros</h2>', unsafe_allow_html=True)
 st.markdown("""
-Ganadora del Concurso de Investigación Académica 2024-1:  
+Ganadora del Concurso de Investigación Académica 2024-1  
 [🔗 Monografía publicada](https://estudios-generales-letras.pucp.edu.pe/investigacion-academica-2024-1-monografias-ganadoras/)
 """)
 st.markdown("""
 <div class="imagenes-logros">
-    <img src="https://i.imgur.com/YQx2CP1.jpeg" alt="Logro 1">
-    <img src="https://i.imgur.com/OvFF2iU.jpeg" alt="Logro 2">
+    <img src="https://i.imgur.com/YQx2CP1.jpeg">
+    <img src="https://i.imgur.com/OvFF2iU.jpeg">
 </div>
 """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
@@ -230,12 +209,13 @@ st.markdown('</div>', unsafe_allow_html=True)
 # --- LÍNEA DE TIEMPO ---
 st.markdown('<div class="seccion">', unsafe_allow_html=True)
 st.markdown('🕒 <h2>Mi trayectoria</h2>', unsafe_allow_html=True)
+
 timeline_events = [
-    {"year": "2022", "title": "Egresé del colegio", "description": "Terminé mis estudios en el Colegio Cristo Rey."},
-    {"year": "2023", "title": "Inicio en CATO", "description": "Empecé Publicidad en la PUCP. Primer puesto desde entonces."},
-    {"year": "Marzo 2024", "title": "Diseñadora en Huellitas PUCP", "description": "Diseño audiovisual en voluntariado animalista."},
-    {"year": "Marzo 2025", "title": "Coordinadora de Huellitas PUCP", "description": "Lideré redes sociales y campañas digitales."},
-    {"year": "Mayo 2025", "title": "Ganadora del Concurso Investiga", "description": "Mi monografía fue publicada por EE.GG.LL PUCP."}
+    {"year": "2022", "title": "Egresé del colegio", "description": "Colegio Cristo Rey."},
+    {"year": "2023", "title": "Inicio en CATO", "description": "Publicidad en PUCP, primer puesto."},
+    {"year": "Marzo 2024", "title": "Diseñadora en Huellitas", "description": "Diseño audiovisual."},
+    {"year": "Marzo 2025", "title": "Coordinadora de Huellitas", "description": "Redes sociales y campañas."},
+    {"year": "Mayo 2025", "title": "Ganadora de Concurso", "description": "Monografía publicada."}
 ]
 for event in timeline_events:
     st.markdown(f'''
@@ -244,7 +224,8 @@ for event in timeline_events:
             <p>{event["description"]}</p>
         </div>
     ''', unsafe_allow_html=True)
+
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- FOOTER ---
-st.markdown('<footer>✨ Grecia García Hoyos | Este portafolio es un reflejo de mi camino y creatividad ✨</footer>', unsafe_allow_html=True)
+st.markdown('<footer>✨ Portafolio creado por Grecia García Hoyos | Con amor y gatitos negros 🐈‍⬛✨</footer>', unsafe_allow_html=True)
