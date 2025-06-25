@@ -51,15 +51,6 @@ st.markdown(f"""
         margin-top: 3rem;
         font-weight: 600;
     }}
-    .galeria img, .imagenes-logros img {{
-        border-radius: 10px;
-        max-width: 100%;
-        box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
-        transition: transform 0.3s ease;
-    }}
-    .galeria img:hover, .imagenes-logros img:hover {{
-        transform: scale(1.05);
-    }}
     .evento-timeline {{
         border-left: 4px solid {celeste_suave};
         padding-left: 1rem;
@@ -97,11 +88,11 @@ st.markdown('📬 <h2>Contacto</h2>', unsafe_allow_html=True)
 st.markdown(f'📧 {info["Email"]}  \n📍 {info["City"]}  \n[🔗 LinkedIn]({info["Medium"]})')
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- GALERÍA INTERACTIVA ---
-endorsements = [
-    ("https://i.imgur.com/YQx2CP1.jpeg", "Foto 1"),
-    ("https://i.imgur.com/CmdHRw2.jpeg", "Foto 2"),
-    ("https://i.imgur.com/jakXIXZ.jpeg", "Foto 3")
+# --- GALERÍA DE FOTOS INTERACTIVA ---
+imagenes = [
+    ("https://i.imgur.com/YQx2CP1.jpeg", "Evento Huellitas 1"),
+    ("https://i.imgur.com/CmdHRw2.jpeg", "Evento Huellitas 2"),
+    ("https://i.imgur.com/jakXIXZ.jpeg", "Video en marcha PUCP")
 ]
 
 st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
@@ -110,75 +101,42 @@ st.markdown('📸 <h2>Galería</h2>', unsafe_allow_html=True)
 if 'foto_idx' not in st.session_state:
     st.session_state.foto_idx = 0
 
-col_izq, col_cen, col_der = st.columns([1, 2, 1])
-with col_izq:
-    if st.button("⬅️ Anterior"):
-        st.session_state.foto_idx = (st.session_state.foto_idx - 1) % len(endorsements)
-with col_cen:
-    st.image(
-        endorsements[st.session_state.foto_idx][0],
-        caption=endorsements[st.session_state.foto_idx][1],
-        use_column_width=True
-    )
-with col_der:
-    if st.button("Siguiente ➡️"):
-        st.session_state.foto_idx = (st.session_state.foto_idx + 1) % len(endorsements)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- SOBRE GRECIA ---
-st.markdown('<div class="seccion">', unsafe_allow_html=True)
-st.markdown('🌟 <h2>Sobre Grecia</h2>', unsafe_allow_html=True)
-st.markdown('Grecia García Hoyos es estudiante de Publicidad en la PUCP, apasionada por la comunicación creativa con impacto social. Se destaca por ser productiva, puntual y con habilidades de liderazgo y organización.')
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- EXPERIENCIA Y METAS ---
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
-    st.markdown('<div class="seccion">', unsafe_allow_html=True)
-    st.markdown('💼 <h2>Experiencia</h2>', unsafe_allow_html=True)
-    st.markdown("""
-    - Voluntariado ambiental en el colegio  
-    - Coordinadora de redes sociales en Huellitas PUCP  
-    - Fortaleció creatividad, comunicación digital y trabajo en equipo
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+    if st.button("⬅️", key="prev_img"):
+        st.session_state.foto_idx = (st.session_state.foto_idx - 1) % len(imagenes)
 with col2:
-    st.markdown('<div class="seccion">', unsafe_allow_html=True)
-    st.markdown('🎯 <h2>Metas</h2>', unsafe_allow_html=True)
-    st.markdown("Desarrollarse profesionalmente en comunicación y publicidad, creando proyectos con impacto social.")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# --- HABILIDADES Y CERTIFICACIONES ---
-col3, col4 = st.columns(2)
+    st.image(imagenes[st.session_state.foto_idx][0], caption=imagenes[st.session_state.foto_idx][1], use_container_width=True)
 with col3:
-    st.markdown('<div class="seccion">', unsafe_allow_html=True)
-    st.markdown('🛠️ <h2>Habilidades</h2>', unsafe_allow_html=True)
-    st.markdown("""
-    - Edición de video (CapCut)  
-    - Diseño gráfico (Canva)  
-    - Comunicación digital  
-    - Liderazgo y trabajo en equipo  
-    - Creatividad  
-    - Inglés C1 (PUCP)
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
-with col4:
-    st.markdown('<div class="seccion">', unsafe_allow_html=True)
-    st.markdown('📜 <h2>Certificaciones</h2>', unsafe_allow_html=True)
-    st.markdown("Inglés nivel C1 certificado por Idiomas PUCP.")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# --- HOBBIES ---
-st.markdown('<div class="seccion">', unsafe_allow_html=True)
-st.markdown('🎾 <h2>Hobbies</h2>', unsafe_allow_html=True)
-st.markdown("""
-- Grabar y editar videos  
-- Practicar tenis de campo  
-- Escuchar música y aprender cosas nuevas
-""")
+    if st.button("➡️", key="next_img"):
+        st.session_state.foto_idx = (st.session_state.foto_idx + 1) % len(imagenes)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- MIS TRABAJOS CON ENLACES ---
+# --- CARRUSEL DE VIDEOS ---
+videos = [
+    ("https://www.tiktok.com/@huellitaspucp/video/7349278356820647173", "Video para Huellitas - TikTok"),
+    ("https://www.instagram.com/reel/DJPZk9xpZaG/", "Video para redes - Instagram Reel")
+]
+
+st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
+st.markdown('🎥 <h2>Carrusel de Videos</h2>', unsafe_allow_html=True)
+
+if 'video_idx' not in st.session_state:
+    st.session_state.video_idx = 0
+
+vcol1, vcol2, vcol3 = st.columns([1, 6, 1])
+with vcol1:
+    if st.button("⬅️", key="prev_vid"):
+        st.session_state.video_idx = (st.session_state.video_idx - 1) % len(videos)
+with vcol2:
+    st.markdown(f"[{videos[st.session_state.video_idx][1]}]({videos[st.session_state.video_idx][0]})", unsafe_allow_html=True)
+    st.video(videos[st.session_state.video_idx][0])
+with vcol3:
+    if st.button("➡️", key="next_vid"):
+        st.session_state.video_idx = (st.session_state.video_idx + 1) % len(videos)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- MIS TRABAJOS CON ENLACES CLICABLES ---
 st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
 st.markdown('🎨 <h2>Mis trabajos</h2>', unsafe_allow_html=True)
 
@@ -240,10 +198,10 @@ st.markdown('🕒 <h2>Mi trayectoria</h2>', unsafe_allow_html=True)
 
 timeline_events = [
     {"year": "2022", "title": "Egresé del colegio", "description": "Colegio Cristo Rey."},
-    {"year": "2023", "title": "Inicié mis estudios en PUCP", "description": "Publicidad en PUCP, mis buenas notas me llevaron a ocupar el primer puesto de la promoción."},
-    {"year": "Marzo 2024", "title": "Diseñadora en Huellitas", "description": "Ingresé como diseñadora audiovisual."},
-    {"year": "Marzo 2025", "title": "Coordinadora de Huellitas", "description": "Encargada de redes sociales y campañas."},
-    {"year": "Mayo 2025", "title": "Ganadora de Concurso", "description": "Gané el concurso de Investigación Académica de EEGGLL."}
+    {"year": "2023", "title": "Inicié mis estudios en PUCP", "description": "Publicidad en PUCP, primer puesto de la promoción."},
+    {"year": "Marzo 2024", "title": "Diseñadora en Huellitas", "description": "Diseñadora audiovisual en campañas."},
+    {"year": "Marzo 2025", "title": "Coordinadora de Huellitas", "description": "Encargada de redes y estrategia digital."},
+    {"year": "Mayo 2025", "title": "Ganadora de Concurso", "description": "Premio de Investigación Académica en EEGGLL."}
 ]
 
 for event in timeline_events:
