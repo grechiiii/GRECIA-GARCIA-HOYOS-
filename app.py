@@ -113,13 +113,21 @@ with col3:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- CARRUSEL DE VIDEOS ---
-videos = [
-    ("https://www.tiktok.com/@huellitaspucp/video/7349278356820647173", "Video para Huellitas - TikTok"),
-    ("https://www.instagram.com/reel/DJPZk9xpZaG/", "Video para redes - Instagram Reel")
-]
-
 st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
 st.markdown('🎥 <h2>Carrusel de Videos</h2>', unsafe_allow_html=True)
+
+videos = [
+    {
+        "imagen": "https://imgur.com/m2b3Z0B.png",
+        "titulo": "TikTok para Huellitas",
+        "enlace": "https://vm.tiktok.com/ZMS9CDVTq/"
+    },
+    {
+        "imagen": "https://imgur.com/EKxwuDo.png",
+        "titulo": "Instagram Reel",
+        "enlace": "https://www.instagram.com/reel/DJPZk9xpZaG/"
+    }
+]
 
 if 'video_idx' not in st.session_state:
     st.session_state.video_idx = 0
@@ -129,12 +137,17 @@ with vcol1:
     if st.button("⬅️", key="prev_vid"):
         st.session_state.video_idx = (st.session_state.video_idx - 1) % len(videos)
 with vcol2:
-    st.markdown(f"[{videos[st.session_state.video_idx][1]}]({videos[st.session_state.video_idx][0]})", unsafe_allow_html=True)
-    st.video(videos[st.session_state.video_idx][0])
+    st.markdown(f"""
+        <a href="{videos[st.session_state.video_idx]['enlace']}" target="_blank">
+            <img src="{videos[st.session_state.video_idx]['imagen']}" style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            <p style="text-align:center; color:{texto_claro}; font-weight: 600;">{videos[st.session_state.video_idx]['titulo']}</p>
+        </a>
+    """, unsafe_allow_html=True)
 with vcol3:
     if st.button("➡️", key="next_vid"):
         st.session_state.video_idx = (st.session_state.video_idx + 1) % len(videos)
-st.markdown('</div>', unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True) 
 
 # --- MIS TRABAJOS CON ENLACES CLICABLES ---
 st.markdown('<div class="seccion galeria">', unsafe_allow_html=True)
@@ -178,19 +191,31 @@ st.markdown('[⬇️ Descargar CV (PDF)](https://drive.google.com/file/d/1UswU-z
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- LOGROS ---
-st.markdown('<div class="seccion">', unsafe_allow_html=True)
-st.markdown('🏆 <h2>Logros</h2>', unsafe_allow_html=True)
-st.markdown("""
-Ganadora del Concurso de Investigación Académica 2024-1  
-[🔗 Monografía publicada](https://estudios-generales-letras.pucp.edu.pe/investigacion-academica-2024-1-monografias-ganadoras/)
-""")
-st.markdown("""
-<div class="imagenes-logros">
-    <img src="https://i.imgur.com/YQx2CP1.jpeg">
-    <img src="https://i.imgur.com/OvFF2iU.jpeg">
+st.markdown(f"""
+<div class="seccion">
+    <h2>🏆 Logros</h2>
+    <p>
+    Ganadora del Concurso de Investigación Académica 2024-1<br>
+    <a href="https://estudios-generales-letras.pucp.edu.pe/investigacion-academica-2024-1-monografias-ganadoras/" target="_blank">🔗 Monografía publicada</a>
+    </p>
+    <div class="imagenes-logros">
+        <img src="https://i.imgur.com/YQx2CP1.jpeg">
+        <img src="https://i.imgur.com/OvFF2iU.jpeg">
+    </div>
 </div>
+<style>
+.imagenes-logros img {{
+    border-radius: 10px;
+    max-width: 100%;
+    margin: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+}}
+.imagenes-logros img:hover {{
+    transform: scale(1.05);
+}}
+</style>
 """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
 
 # --- LÍNEA DE TIEMPO ---
 st.markdown('<div class="seccion">', unsafe_allow_html=True)
